@@ -72,11 +72,9 @@ def get_report():
 def submit_feedback():
     feedback = request.form.get('feedback_text')
     
-    # FIXED: Using dynamic path that points to the persistent disk on Render
     with open(FEEDBACK_PATH, "a") as f:
         f.write(f"Feedback received: {feedback}\n---\n")
     
-    # Instead of rendering index, show the thank you page
     return render_template('thank_you.html')
 
 def get_all_conditions():
