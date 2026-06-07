@@ -1,18 +1,30 @@
 from flask import Flask, render_template, request
 import sqlite3
 import os
+import shutil
 from AIclient import generate_health_advice
 
 # Initialize the Flask application
 app = Flask(__name__)
 
-# If running on Render, use the persistent disk path. Otherwise, use local path.
+# 1. Define paths for Render vs Local Environment
 if os.path.exists('/data'):
+    # Production Paths on Render
     DB_PATH = '/data/Nutricon.db'
-    FEEDBACK_PATH = '/data/feedback.txt' # <-- FIXED: Store feedback persistently
+    FEEDBACK_PATH = '/data/feedback.txt'
+    
+    # Render downloads your GitHub files into /opt/render/project/src/
+    SRC_DB_PATH = '/opt/render/project/src/Nutricon.db'
+    
+    # AUTOMATIC INITIALIZATION: If the database doesn't exist on the persistent disk yet,
+    # copy the original seeded database file from your repository over to /data/
+    if not os.path.exists(DB_PATH) and os.path.exists(SRC_DB_PATH):
+        print(f"Initializing persistent storage: Copying {SRC_DB_PATH} to {DB_PATH}")
+        shutil.copy2(SRC_DB_PATH, DB_PATH)
 else:
+    # Local Paths on your PC
     DB_PATH = 'Nutricon.db'
-    FEEDBACK_PATH = 'feedback.txt'       # <-- Local backup path
+    FEEDBACK_PATH = 'feedback.txt'
 
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
