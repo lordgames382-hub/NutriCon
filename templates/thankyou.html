@@ -1,0 +1,16 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You - Nutricon</title>
+    <meta http-equiv="refresh" content="5;url={{ url_for('index') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+ </head>
+<body>
+    <fieldset style="text-align: center; margin-top: 50px;">
+        <h1>Thank You!</h1>
+        <p>Your feedback helps us improve the Nutricon AI experience.</p>
+        <p>You will be redirected to the home page in a few seconds...</p>
+        <a href="{{ url_for('index') }}" id="submitBtn" style="text-decoration: none; width: fit-content;">Return Now</a>
+    </fieldset>
+</body>
+</html>

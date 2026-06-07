@@ -1,0 +1,11 @@
+ - A website that takes in a number of conditions from the user, and outputs the foods to take more of and the foods to avoid, as well as some general advice.
+
+How the project works:
+ 1) User chooses input to give to the website.
+ 2) The back-end program takes the input and searches database.
+ 3) Database checks for the group that the conditions belong in.
+ 4) Database then checks whether any of the input has a contradicting food. 
+    - If have, output is modified to include the exception
+    - If not, output is sent back to the program without changes
+ 5) Database sent a hardcoded message to an AI model. 
+ 6) AI model sends back the final message for the user to read.

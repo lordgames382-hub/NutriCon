@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/user/Desktop/1a/Nutricon.db" foreign_keys="1"/><window><current_tab id="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="300"/><column_width id="3" width="5028"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="ConditionTypes"/><default_encoding codec=""/><browsetable_info data="AAAAAwAAAB4AQwBvAG4AZABpAHQAaQBvAG4AcwBUAHkAcABlAHMAAAABAAAAAQAAAAAAAAAAAAAAAAD//////////wAAAAD/////AAAAFABDAG8AbgBkAGkAdABpAG8AbgBzAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////wAAABwAQwBvAG4AZABpAHQAaQBvAG4AVAB5AHAAZQBzAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////w=="/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE IF NOT EXISTS FoodOverrides (
+    overrideID INTEGER PRIMARY KEY AUTOINCREMENT,
+    foodID INTEGER NOT NULL,
+    conditionID INTEGER NOT NULL,
+    role TEXT NOT NULL, 
+    priority INTEGER DEFAULT 3, 
+    FOREIGN KEY (foodID) REFERENCES Foods(foodID),
+    FOREIGN KEY (conditionID) REFERENCES Conditions(conditionID)
+)
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

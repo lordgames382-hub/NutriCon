@@ -1,0 +1,156 @@
+body 	{
+    	background-color: #D4EDDA;
+    	font-family: 'Segoe UI', sans-serif;
+    	color: #2D3436;
+}
+
+.avoid-box 	{
+    	background-color: #F8D7DA; 
+    	border-left: 5px solid #DC3545;
+    	padding: 15px;
+    	margin: 10px 0;
+}
+
+.title	{
+		font-size: 75px;
+		text-align: center
+}
+
+.prioritize-box {
+    	background-color: #D4FEDA; 
+    	border-left: 5px solid #28A745;
+    	padding: 15px;
+    	margin: 10px 0;
+}
+
+.ai-advice	{
+    	background-color: #E3F2FD;
+    	padding: 20px;
+    	border-radius: 8px;
+    	font-style: italic;
+}
+
+p	{
+	text-align: center;
+	text-size: large;
+}
+
+.notice	{
+	font-weight: bold 300
+}
+
+select[multiple] {
+    	width: 100%;
+    	padding: 10px;
+    	border-radius: 8px;
+    	border: 1px solid #ced4da;
+    	background-color: white;
+    	font-size: 1rem;
+    	color: #2D3436; /* Dark Charcoal text */
+}
+
+select[multiple] option {
+    	padding: 8px;
+    	border-bottom: 1px solid #f1f1f1;
+}
+
+select[multiple] option:checked {
+    	background-color: #D4EDDA !important; /* Soft Mint Green for selection */
+    	color: #155724;
+}
+
+.hint {
+    	font-size: 0.85rem;
+    	color: #636e72;
+    	margin-top: 5px;
+}
+
+fieldset {
+    background-color: #EEEEEE; 
+    border: 2px solid #D4EDDA; 
+    border-radius: 12px;      
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+}
+
+legend {
+    background-color: #FFFFFF;
+    padding: 0 10px;
+    font-weight: bold;
+    color: #2D3436;           
+    border-radius: 5px;
+}
+
+#submitBtn {
+    display: block;
+    margin: 20px auto 0 auto; /* Centers horizontally and adds top spacing */
+    padding: 10px 20px;
+    background-color: #28A745; /* Green to match your health theme */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitBtn:hover {
+    background-color: #218838;
+}
+
+.disclaimer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #636e72;
+    text-align: center;
+}
+
+.disclaimer strong {
+    color: #2D3436; /* Makes the "Notice" label stand out */
+}
+
+.feedback-section {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.feedback-section textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #D4EDDA; /* Mint border */
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+}
+
+.feedback-section button {
+    margin-top: 10px;
+    background-color: #2D3436; /* Dark Charcoal for contrast */
+}
+
+/* Add to style.css to ensure feedback text is readable */
+.feedback-section h3 {
+    color: #2D3436;
+    margin-bottom: 10px;
+}
+
+.feedback-section textarea::placeholder {
+    color: #b2bec3;
+    font-style: italic;
+}
+
+#submitBtn, .button-link {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 20px;
+    background-color: #28A745; 
+    color: white !important; /* Ensure text stays white even if it's a link */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
