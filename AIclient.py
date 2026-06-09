@@ -12,7 +12,8 @@ def generate_health_advice(condition, food, role):
 
     # Gemini's API text generation endpoint
     # Using the current active stable production model alias
-    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
+    # The correct active endpoint path for Gemini 1.5 Flash
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
     
     # Reconstructing your exact prompt structure
     prompt = f"""You are a professional nutrition assistant. Provide health advice based ONLY on the provided context.
