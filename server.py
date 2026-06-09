@@ -10,11 +10,11 @@ app = Flask(__name__)
 # 1. Define paths for Render vs Local Environment
 if os.path.exists('/data'):
     # Production Paths on Render
-    DB_PATH = '/data/Nutricon.db'
+    DB_PATH = '/data/NutriCon.db'
     FEEDBACK_PATH = '/data/feedback.txt'
     
     # Render downloads your GitHub files into /opt/render/project/src/
-    SRC_DB_PATH = '/opt/render/project/src/Nutricon.db'
+    SRC_DB_PATH = '/opt/render/project/src/NutriCon.db'
     
     # AUTOMATIC INITIALIZATION: If the database doesn't exist on the persistent disk yet,
     # copy the original seeded database file from your repository over to /data/
@@ -23,7 +23,7 @@ if os.path.exists('/data'):
         shutil.copy2(SRC_DB_PATH, DB_PATH)
 else:
     # Local Paths on your PC
-    DB_PATH = 'Nutricon.db'
+    DB_PATH = 'NutriCon.db'
     FEEDBACK_PATH = 'feedback.txt'
 
 def get_db_connection():
@@ -84,10 +84,29 @@ def get_report():
 def submit_feedback():
     feedback = request.form.get('feedback_text')
     
-    with open(FEEDBACK_PATH, "a") as f:
-        f.write(f"Feedback received: {feedback}\n---\n")
-    
-    return render_template('thank_you.html')
+    # Safety Check: If the form was submitted empty, don't crash
+    if not feedback:
+        feedback = "Empty feedback submitted."
+
+    try:
+        # Step A: Extract the directory path (e.g., '/data' or '.')
+        dir_name = os.path.dirname(FEEDBACK_PATH)
+        
+        # Step B: Ensure the directory actually exists before writing to it
+        if dir_name and not os.path.exists(dir_name):
+            os.makedirs(dir_name, exist_ok=True)
+            
+        # Step C: Write the feedback safely
+        with open(FEEDBACK_PATH, "a", encoding="utf-8") as f:
+            f.write(f"Feedback received: {feedback}\n---\n")
+            
+        return render_template('thank_you.html')
+
+    except Exception as e:
+        # This will catch the exact error and print it to your Render logs 
+        # instead of showing a generic, blank 500 page to the user
+        print(f"CRITICAL FEEDBACK ERROR: {str(e)}")
+        return f"Feedback submission failed temporarily. Error details: {str(e)}", 500
 
 def get_all_conditions():
     conn = get_db_connection()
