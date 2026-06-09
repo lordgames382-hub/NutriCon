@@ -10,11 +10,11 @@ app = Flask(__name__)
 # 1. Define paths for Render vs Local Environment
 if os.path.exists('/data'):
     # Production Paths on Render
-    DB_PATH = '/data/NutriCon.db'
+    DB_PATH = '/data/Nutricon.db'
     FEEDBACK_PATH = '/data/feedback.txt'
     
     # Render downloads your GitHub files into /opt/render/project/src/
-    SRC_DB_PATH = '/opt/render/project/src/NutriCon.db'
+    SRC_DB_PATH = '/opt/render/project/src/Nutricon.db'
     
     # AUTOMATIC INITIALIZATION: If the database doesn't exist on the persistent disk yet,
     # copy the original seeded database file from your repository over to /data/
@@ -23,7 +23,7 @@ if os.path.exists('/data'):
         shutil.copy2(SRC_DB_PATH, DB_PATH)
 else:
     # Local Paths on your PC
-    DB_PATH = 'NutriCon.db'
+    DB_PATH = 'Nutricon.db'
     FEEDBACK_PATH = 'feedback.txt'
 
 def get_db_connection():
