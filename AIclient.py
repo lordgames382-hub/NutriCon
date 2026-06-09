@@ -22,10 +22,10 @@ Provide a concise summary (max 100 words) on what to avoid and prioritize for th
 Include one helpful piece of advice. Do not include any technical instructions or meta-talk."""
 
     try:
-        # FIX: Added the explicit 'models/' prefix required by the backend API registry
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
+        # UPDATE: Pointing to the active supported production model instead of the deprecated 1.5 versions
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
-        # Generate content with your custom configurations
+        # Generate content with options matching your old configuration
         response = model.generate_content(
             prompt,
             generation_config=genai.types.GenerationConfig(
