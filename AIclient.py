@@ -13,13 +13,19 @@ def generate_health_advice(condition, food, role):
     genai.configure(api_key=api_key)
     
     # Reconstruct your prompt exactly
-    prompt = f"""You are a professional nutrition assistant. Provide health advice based ONLY on the provided context.
+    # An updated, flexible prompt that doesn't choke on missing database items
+    prompt = f"""You are a professional nutrition assistant. 
 
-The user has the following conditions: {condition}.
-Our database recommends they prioritize these foods: {food}.
+The user has been diagnosed with the following health conditions: {condition}.
+Our database recommends prioritizing these specific foods if available: {food if food else "No specific database items listed"}.
 
-Provide a concise summary (max 100 words) on what to avoid and prioritize for these conditions. 
-Include one helpful piece of advice. Do not include any technical instructions or meta-talk."""
+Task:
+Provide a highly concise, practical summary (maximum 100 words) outlining what a person with these conditions should prioritize in their daily diet and what major food groups they ought to avoid. 
+
+Guidelines:
+- If specific foods were provided above, incorporate them. If not, utilize your general nutritional knowledge to provide safe recommendations for the stated conditions.
+- Include one actionable, helpful piece of daily advice.
+- Do not include any technical instructions, introductory greetings, or meta-talk. Start speaking directly."""
 
     try:
         # UPDATE: Pointing to the active supported production model instead of the deprecated 1.5 versions
