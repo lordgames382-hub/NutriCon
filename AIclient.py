@@ -11,7 +11,8 @@ def generate_health_advice(condition, food, role):
         return "Error: AI configuration missing. Please set the GEMINI_API_KEY environment variable."
 
     # Gemini's API text generation endpoint
-    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={api_key}"
+    # Using the current active stable production model alias
+    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
     
     # Reconstructing your exact prompt structure
     prompt = f"""You are a professional nutrition assistant. Provide health advice based ONLY on the provided context.
