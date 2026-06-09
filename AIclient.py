@@ -36,7 +36,7 @@ Guidelines:
             prompt,
             generation_config=genai.types.GenerationConfig(
                 temperature=0.3,
-                max_output_tokens=200
+                max_output_tokens=600
             )
         )
         
